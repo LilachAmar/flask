@@ -2,11 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('preperation') {
-            steps {
-                deleteDir()
-            }
-        }
+        
         
         stage('docker build') {
             steps {
@@ -29,6 +25,11 @@ pipeline {
         stage('verify container') {
             steps {
                 sh 'docker ps'
+            }
+        }
+        stage('clean') {
+            steps {
+                deleteDir()
             }
         }
     }
